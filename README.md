@@ -36,7 +36,20 @@
     q.choice_set.create(choice_text='Not much', votes=0) -> 透過foreign key指定的表去創立choice表的內容
     q.choice_set.all() -> 查看該question的內容
     q.choice_set.create(parameters = 'content') -> 創建資料
+
+## 創建adminuser, 進入後台!
+    首先透過指令來創建admin user
+    python manage.py createsuperuser
+    username: admin
+    Email address: admin@example.com
+    password: XXXXXXXX
+
+    運行伺服器, 然後到/admin路徑並用admin帳號密碼登入!
+
+## 後臺操作
+    進入到後台後, 我們透過在polls/admin.py去新增Question, Choice, Answer模塊, 這些模塊我們能直接在後台做操作! 包含新建, 刪除, 查詢資料 及操作紀錄(log查詢)
     
+
 ## 小筆記
     1. 為何使用py manage.py 去執行指令, 不是用py執行呢?
         是因為manage.py會設置DJANGO_SETTINGS_MODULE環境變量，這個變量會讓Django根據mysite/settings.py文件來設置Python包的導入路徑。
