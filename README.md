@@ -48,7 +48,27 @@
 
 ## 後臺操作
     進入到後台後, 我們透過在polls/admin.py去新增Question, Choice, Answer模塊, 這些模塊我們能直接在後台做操作! 包含新建, 刪除, 查詢資料 及操作紀錄(log查詢)
+
+## 透過views.py，創建從資料庫抓資料出來的頁面
+    1. polls/views.py, 新增3個function,並用argument來處理各種頁面
+    - detail 詳細頁
+    - result 結果頁
+    - vote 投票頁
+    2. 在polls/urls.py去新增三個路由
+    補充: 在每個路由中可以去指定name, 在前端templates可以方便套用
+    3. 將.models內的資料表引進(Question), 在頁面的function去讀取資料表內容, 並return結果
+    4. 若要回傳對應的templates html檔案, 則可以用render的方式
+    return HttpResponse(template.render(context, request)), 或是用shortcut的方式
+    return render(request, 'polls/index.html', context)
+    5. 有時, 我們會需要從資料庫請求特定資料, 有的時候, 沒有的時候回傳404, Django提供了一種快速的函式, get_object_or_404()來使用, 記得要先導入才可以
+
+    6. 若有多個app時, 要如何知道是哪個app的路徑呢?
+    在polls/urls.py去新增 app_name, 並在templates動態變數中加入app_name:function
+    ex: 
+        polls/views.py, app_name = polls
+        templates/polls/detail.html, {% url 'polls:detail' %}
     
+
 
 ## 小筆記
     1. 為何使用py manage.py 去執行指令, 不是用py執行呢?

@@ -1,6 +1,8 @@
 from django.urls import path 
 from . import views
 
+# app_name = 'polls' 指定這個後須在所有templates url動態變數中去指定app_name:function
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('index2', views.index2, name = 'index2'),
