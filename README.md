@@ -68,7 +68,24 @@
         polls/views.py, app_name = polls
         templates/polls/detail.html, {% url 'polls:detail' %}
     
-
+## chapter4, 表單應用完成投票功能
+    參考文獻: https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial04/
+    1. 先在detail.html裡面去加上form的表單內容, 完成前端
+    2. 接著在views.py裡面去處理detail function的返回內容, 完成後端
+    3. 投票後, 我們將返回results的頁面, 頁面中去顯示該問題的每一個choice投票結果
+    
+    extra: 通用視圖(ListView)
+    在views.py裡面, 透過一種class的特定寫法, 使用特定的變數命名
+    就能達成一樣的結果, 並使代碼更簡潔有規則性
+    例如: 要用通用視圖修改 index頁面
+    1. polls/urls.py 將index的路徑改成 path('', views.IndexView.as_view(), name='index')
+    2. views.py 建立 indexView的class(generic.ListView)去處理
+    
+    extra: 通用視圖(DetailView)
+    例如: 要用通用視圖修改 detail頁面
+    1. polls/urls.py 將index的路徑改成 path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+    2. views.py 建立 DetailView的class(generic.DetailView)去處理
+    
 
 ## 小筆記
     1. 為何使用py manage.py 去執行指令, 不是用py執行呢?
